@@ -84,57 +84,6 @@ export function ApiConfiguration() {
           <Cog className="inline-block" size={16} />
         </button>
       </DialogTrigger>
-      <DialogContent className="animation-none w-full min-w-0 max-w-sm overflow-hidden p-4">
-        <DialogHeader>
-          <DialogTitle>Configuration</DialogTitle>
-          <DialogDescription>
-            Configure your Provider API Key and Endpoint(if any). These settings
-            are saved in your browser.
-          </DialogDescription>
-        </DialogHeader>
-        {/* @ts-ignore */}
-        <form action={action} className="mt-2 flex flex-col gap-2.5">
-          <Label className="font-normal">
-            <span className="w-20 after:ml-0.5 after:text-red-400 after:content-['*']">
-              Provider
-            </span>
-            <select
-              className="mt-2 flex h-10 w-full rounded-md border border-gray-200 bg-white px-3 py-2 text-sm font-normal ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-400 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 dark:border-gray-800 dark:bg-gray-950 dark:ring-offset-gray-950 dark:placeholder:text-gray-400 dark:focus-visible:ring-gray-800"
-              name="provider"
-              required
-            >
-              <option value="resend">Resend</option>
-            </select>
-          </Label>
-          <Label className="font-normal">
-            <span className="w-20 after:ml-0.5 after:text-red-400 after:content-['*']">
-              API Key
-            </span>
-            <Input
-              className="mt-2 font-normal"
-              defaultValue={apiKey || ''}
-              name="apiKey"
-              placeholder="API Key"
-              required
-              spellCheck={false}
-              type="password"
-            />
-          </Label>
-          <Label className="font-normal">
-            <span className="w-20">Endpoint</span>
-            <Input
-              className="mt-2 font-normal"
-              defaultValue={endpoint || ''}
-              name="endpoint"
-              placeholder="API Endpoint"
-              spellCheck={false}
-              type="text"
-            />
-          </Label>
-
-          <SubmitButton disabled={isPending} />
-        </form>
-      </DialogContent>
     </Dialog>
   );
 }
