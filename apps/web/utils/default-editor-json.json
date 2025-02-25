@@ -1,4 +1,16 @@
 {
   "type": "doc",
-  "content": []
+  "content": [
+    {
+      "type": "heading",
+      "attrs": { "textAlign": "left", "level": 2 },
+      "content": [
+        {
+          "type": "text",
+          "marks": [{ "type": "bold" }],
+          "text": "Standaard tekst.."
+        }
+      ]
+    }
+  ]
 }
