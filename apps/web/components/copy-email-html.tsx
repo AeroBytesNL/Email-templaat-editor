@@ -34,7 +34,7 @@ function SubmitButton(props: SubmitButtonProps) {
       ) : (
         <ClipboardCopy className="inline-block shrink-0 sm:mr-1" size={16} />
       )}
-      <span className="hidden sm:inline-block">Copy HTML</span>
+      <span className="hidden sm:inline-block">Kopieer HTML</span>
     </button>
   );
 }

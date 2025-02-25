@@ -96,7 +96,7 @@ export function EmailFrame(props: EmailFrameProps) {
           variant="secondary"
         >
           <MailOpen className="h-3.5 w-3.5 shrink-0" />
-          <span>Open in new tab</span>
+          <span>Open in een nieuwe tab</span>
         </Button>
       ) : null}
     </div>

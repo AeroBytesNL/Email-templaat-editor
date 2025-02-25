@@ -41,7 +41,7 @@ function SubmitButton(props: SubmitButtonProps) {
       ) : (
         <Eye className="inline-block shrink-0 sm:mr-1" size={16} />
       )}
-      <span className="hidden sm:inline-block">Preview Email</span>
+      <span className="hidden sm:inline-block">Email voorbeeld</span>
     </button>
   );
 }

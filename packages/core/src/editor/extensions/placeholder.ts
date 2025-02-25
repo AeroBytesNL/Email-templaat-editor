@@ -14,7 +14,7 @@ export const PlaceholderExtension = Placeholder.configure({
       return '';
     }
 
-    return 'Write something or / to see commands';
+    return 'Schrijf iets of / om opdrachten te zien';
   },
   includeChildren: true,
 });

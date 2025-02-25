@@ -13,10 +13,10 @@ import { EditorTopbar } from '@/components/editor-topbar';
 
 export const metadata: Metadata = {
   title: 'Email template editor',
-  description: 'Try out Maily, the Open-source editor for crafting emails.',
+  description: '',
   twitter: {
     creator: '@imarikchakma',
-    title: 'Playground | Maily',
+    title: 'Email template editor',
     description: 'Try out Maily, the Open-source editor for crafting emails.',
     card: 'summary_large_image',
   },
@@ -60,7 +60,8 @@ export default async function Playground() {
   return (
     <main className="mx-auto w-full max-w-[calc(600px+40px)] px-5">
       <header className="mt-14 border-b pb-6">
-        <h1>Email templaat bewerker</h1>
+        <h1 className="text-3xl">Email templaat bewerker</h1>
+        <h2>Aangepast door AeroBytes</h2>
       </header>
       <EditorTopbar className="mt-6" />
       <EditorPreview />
