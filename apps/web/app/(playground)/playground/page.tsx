@@ -12,7 +12,7 @@ import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { EditorTopbar } from '@/components/editor-topbar';
 
 export const metadata: Metadata = {
-  title: 'Playground | Maily',
+  title: 'Email template editor',
   description: 'Try out Maily, the Open-source editor for crafting emails.',
   twitter: {
     creator: '@imarikchakma',
