@@ -19,17 +19,11 @@ function SubmitButton(props: SubmitButtonProps) {
   const { pending } = useFormStatus();
 
   return (
-    <button
+    <button hidden
       className="flex items-center rounded-md bg-white px-2 py-1 text-sm text-black hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50"
       disabled={disabled || pending}
       type="submit"
     >
-      {pending ? (
-        <Loader2 className="mr-1 inline-block animate-spin" size={16} />
-      ) : (
-        <Asterisk className="mr-1 inline-block" size={16} />
-      )}
-      Send Email
     </button>
   );
 }
