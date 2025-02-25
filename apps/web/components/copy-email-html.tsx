@@ -70,8 +70,8 @@ export function CopyEmailHtml() {
                   const success = await copy(data);
                   toast[success ? 'success' : 'error'](
                     success
-                      ? 'Email HTML copied to clipboard'
-                      : 'Failed to Copy'
+                      ? 'Email HTML is gekopieerd naar je plakbord!'
+                      : 'Oeps, er ging iets mis! :o'
                   );
                 }}
               >
@@ -92,7 +92,7 @@ export function CopyEmailHtml() {
       } else {
         const success = await copy(data);
         toast[success ? 'success' : 'error'](
-          success ? 'Email HTML copied to clipboard' : 'Failed to Copy'
+          success ? 'Email HTML is gekopieerd naar je plakbord!' : 'Oeps, er ging iets mis! :o'
         );
       }
     }
