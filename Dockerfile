@@ -10,7 +10,7 @@ RUN pnpm install --frozen-lockfile
 
 COPY . .
 
-RUN pnpm run build --filter=./apps/web...
+RUN pnpm run build
 
 WORKDIR /app/apps/web
 
