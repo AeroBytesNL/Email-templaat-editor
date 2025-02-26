@@ -26,5 +26,9 @@
     "turbo": "latest",
     "vite": "^5.4.9",
     "vitest": "^2.1.3"
+  },
+  "dependencies": {
+    "autoprefixer": "^10.4.20",
+    "maily": "link:"
   }
 }
