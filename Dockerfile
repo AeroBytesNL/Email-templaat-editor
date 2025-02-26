@@ -1,3 +1,4 @@
+# Stage 1: Install dependencies and build
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package.json pnpm-lock.yaml turbo.json ./
