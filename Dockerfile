@@ -1,19 +1,26 @@
-FROM node:20-alpine
+# Use the official Node.js image as the base image
+FROM node:18-alpine
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml turbo.json ./
+# Copy package manager configuration files
+COPY package.json pnpm-lock.yaml ./
 
+# Install pnpm globally
 RUN npm install -g pnpm
 
-RUN pnpm install --frozen-lockfile
+# Install project dependencies
+RUN pnpm install
 
+# Copy the rest of the application code
 COPY . .
 
+# Build the application
+RUN pnpm build
+
+# Expose the port the app runs on
 EXPOSE 3000
 
-RUN apk add --no-cache curl
-
-HEALTHCHECK --interval=30s --timeout=30s --start-period=5s --retries=3 CMD curl -f http://localhost:3000/ || exit 1
-
-CMD ["pnpm", "dev", "--filter=./apps/web..."]
+# Define the command to run the application
+CMD ["pnpm", "start"]
