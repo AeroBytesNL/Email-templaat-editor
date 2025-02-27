@@ -10,13 +10,14 @@ import { EditorPreview } from '@/components/editor-preview';
 import { ApiConfiguration } from '@/components/api-config';
 import { createSupabaseServerClient } from '@/lib/supabase/server';
 import { EditorTopbar } from '@/components/editor-topbar';
+import { Footer } from '@/components/footer';
 
 export const metadata: Metadata = {
-  title: 'Email template editor',
+  title: 'Email templaat editor',
   description: '',
   twitter: {
     creator: '@imarikchakma',
-    title: 'Email template editor',
+    title: 'Email templaat editor',
     description: 'Try out Maily, the Open-source editor for crafting emails.',
     card: 'summary_large_image',
   },
@@ -65,6 +66,7 @@ export default async function Playground() {
       </header>
       <EditorTopbar className="mt-6" />
       <EditorPreview />
+      <Footer />
     </main>
   );
 }
