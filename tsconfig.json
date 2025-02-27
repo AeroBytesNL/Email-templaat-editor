@@ -3,5 +3,14 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "types": ["vitest/globals"]
-  }
+  },
+  "paths": {
+    "@maily-to/core": ["node_modules/@maily-to/core"],
+    "@/*": [
+      "./*"
+    ],
+    "@next/third-parties/google": [
+      "./node_modules/@next/third-parties/dist/google"
+    ]
+  },
 }
