@@ -61,8 +61,7 @@ export default async function Playground() {
   return (
     <main className="mx-auto w-full max-w-[calc(600px+40px)] px-5">
       <header className="mt-14 border-b pb-6">
-        <h1 className="text-3xl">Email templaat bewerker</h1>
-        <h2>Aangepast door AeroBytes</h2>
+        <h1 className="text-3xl">Email templaat maker</h1>
       </header>
       <EditorTopbar className="mt-6" />
       <EditorPreview />

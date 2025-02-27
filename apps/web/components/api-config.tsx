@@ -76,14 +76,7 @@ export function ApiConfiguration() {
 
   return (
     <Dialog onOpenChange={setIsOpen} open={isOpen}>
-      <DialogTrigger asChild>
-        <button
-          className="flex h-7 w-7 items-center justify-center rounded-md border bg-gray-100 text-black duration-200 hover:bg-gray-200 disabled:cursor-not-allowed disabled:opacity-50"
-          type="button"
-        >
-          <Cog className="inline-block" size={16} />
-        </button>
-      </DialogTrigger>
+
     </Dialog>
   );
 }
