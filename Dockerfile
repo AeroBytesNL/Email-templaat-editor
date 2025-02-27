@@ -4,6 +4,8 @@ WORKDIR /app
 
 COPY . .
 
+RUN npm install -g pnpm
+
 WORKDIR /app/apps/web
 
 RUN pnpm install
