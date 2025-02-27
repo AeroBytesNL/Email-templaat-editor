@@ -29,7 +29,8 @@ function SubmitButton(props: SubmitButtonProps) {
 
   return (
     <button
-      className="flex min-h-[28px] items-center justify-center rounded-md bg-black px-2 py-1 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50 max-sm:w-7"
+      className="flex min-h-[28px] items-center justify-center rounded-md px-2 py-1 text-sm text-white disabled:cursor-not-allowed disabled:opacity-50 max-sm:w-7"
+      style={{ backgroundColor: "#069AF3" }}
       disabled={disabled || pending}
       type="submit"
     >
