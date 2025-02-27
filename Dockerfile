@@ -6,10 +6,12 @@ COPY . .
 
 RUN npm install -g pnpm
 
-WORKDIR /app/apps/web
-
 RUN pnpm install
+
+RUN pnpm build
+
+WORKDIR /app/apps/web
 
 EXPOSE 3000
 
-CMD ["pnpm", "dev"]
+CMD ["pnpm", "start"]
