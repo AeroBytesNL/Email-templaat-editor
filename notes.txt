@@ -1,0 +1,27 @@
+// Encode data
+const jsonData = {
+  "type": "doc",
+  "content": [
+    {
+      "type": "heading",
+      "attrs": { "textAlign": "left", "level": 2 },
+      "content": [
+        {
+          "type": "text",
+          "marks": [{ "type": "bold" }],
+          "text": "So i'm data that was yeeted to me from the URL!"
+        }
+      ]
+    }
+  ]
+};
+
+const encodedData = btoa(encodeURIComponent(JSON.stringify(jsonData)));
+const url = `http://localhost:3000/playground?data=${encodedData}`;
+
+console.log(url);
+
+
+// Decode data:
+const jsonString = decodeURIComponent(atob(searchParams.get("data")!));
+const parsedData = JSON.parse(jsonString);

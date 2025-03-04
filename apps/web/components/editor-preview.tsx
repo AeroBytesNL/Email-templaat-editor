@@ -1,96 +1,92 @@
-'use client';
-
-import { useEffect, useState } from 'react';
-import type { EditorProps } from '@maily-to/core';
-import { Editor } from '@maily-to/core';
-import { Loader2, X } from 'lucide-react';
-import type { JSONContent } from '@tiptap/core';
-import { useEditorContext } from '@/stores/editor-store';
-import { cn } from '@/utils/classname';
-import { Input } from './ui/input';
-import { PreviewTextInfo } from './preview-text-info';
-import { Label } from './ui/label';
-import defaultEditorJSON from '../utils/default-editor-json.json';
+import { useEffect, useState } from "react";
+import type { EditorProps } from "@maily-to/core";
+import { Editor } from "@maily-to/core";
+import { Loader2 } from "lucide-react";
+import type { JSONContent } from "@tiptap/core";
+import { useSearchParams } from "next/navigation";
+import { useEditorContext } from "@/stores/editor-store";
+import { cn } from "@/utils/classname";
+import defaultEditorJSON from "../utils/default-editor-json.json";
 
 interface EditorPreviewProps {
   className?: string;
-  content?: JSONContent;
-  config?: Partial<EditorProps['config']>;
+  config?: Partial<EditorProps["config"]>;
 }
 
 export function EditorPreview(props: EditorPreviewProps) {
-  const {
-    className,
-    content: defaultContent = defaultEditorJSON,
-    config: defaultConfig,
-  } = props;
-  const {
-    editor,
-    previewText,
-    setPreviewText,
-    setEditor,
-    setJson,
-    subject,
-    setSubject,
-    from,
-    setFrom,
-    replyTo,
-    setReplyTo,
-    to,
-    setTo,
-    apiKey,
-
-    isEditorFocused,
-    setState,
-  } = useEditorContext((s) => s);
-
-  const [showReplyTo, setShowReplyTo] = useState(false);
-
+  const searchParams = useSearchParams();
+  let [decodedContent, setDecodedContent] = useState<JSONContent | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  
+  const { className, config: defaultConfig } = props;
+  
+  const { editor, setEditor, setJson, setState } = useEditorContext((s) => s);
+  
   useEffect(() => {
-    if (!editor) {
-      return;
+    const encodedData = searchParams.get("data");
+    
+    if (encodedData) {
+      try {
+        const jsonString = decodeURIComponent(atob(encodedData));
+        const parsedData = JSON.parse(jsonString) as JSONContent;
+        
+        setDecodedContent(parsedData);
+      } catch (error) {
+        console.error("Invalid encoded JSON data:", error);
+        setDecodedContent(null); // Set to null on error, no default.
+      }
+    } else {
+      setDecodedContent(null); // Set to null if no data is provided.
     }
-
-    editor.on('focus', () => {
-      setState({
-        isEditorFocused: true,
-      });
-    });
-
-    editor.on('blur', () => {
-      setState({
-        isEditorFocused: false,
-      });
-    });
-
+    setIsLoading(false);
+  }, [searchParams]);
+  
+  useEffect(() => {
+    if (!editor) return;
+    
+    editor.on("focus", () => setState({ isEditorFocused: true }));
+    editor.on("blur", () => setState({ isEditorFocused: false }));
+    
     return () => {
-      editor.off('focus');
-      editor.off('blur');
+      editor.off("focus");
+      editor.off("blur");
     };
   }, [editor]);
-
+  
+  console.log("Final contentJson passed to Editor:", decodedContent);
+  
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center mt-8">
+        <Loader2 className="animate-spin text-gray-400" />
+      </div>
+    );
+  }
+  
+  if (decodedContent === null) {
+    // return (
+    //   <div className="flex items-center justify-center mt-8">
+    //     <p>Oh, volgensmij heb ik geen JSON data binnen gekregen, AAAH</p>
+    //   </div>
+    // );
+    decodedContent = defaultEditorJSON;
+  }
+  
   return (
-    <div className={cn('mt-8', className)}>
-
+    <div className={cn("mt-8", className)}>
       <div>
-        {!editor ? (
-          <div className="flex items-center justify-center">
-            <Loader2 className="animate-spin text-gray-400" />
-          </div>
-        ) : null}
-
         <Editor
           config={{
             hasMenuBar: false,
-            wrapClassName: 'editor-wrap',
-            bodyClassName: '!mt-0 !border-0 !p-0',
-            contentClassName: 'editor-content',
-            toolbarClassName: 'flex-wrap !items-start',
+            wrapClassName: "editor-wrap",
+            bodyClassName: "!mt-0 !border-0 !p-0",
+            contentClassName: "editor-content",
+            toolbarClassName: "flex-wrap !items-start",
             spellCheck: false,
             autofocus: false,
             ...defaultConfig,
           }}
-          contentJson={defaultContent}
+          contentJson={decodedContent}
           onCreate={(e) => {
             setEditor(e);
             setJson(e?.getJSON() || {});
