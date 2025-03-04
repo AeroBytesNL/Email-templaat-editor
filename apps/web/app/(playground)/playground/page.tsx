@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
-import PlaygroundContent from './PlaygroundContent';
+import PlaygroundContent from './playgroundContent';
 
 export const metadata: Metadata = {
   title: 'Email template editor',

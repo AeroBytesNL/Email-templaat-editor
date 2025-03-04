@@ -15,7 +15,7 @@ export default function PlaygroundContent() {
 		if (encodedData) {
 			try {
 				const jsonString = decodeURIComponent(atob(encodedData));
-				const parsedData = JSON.parse(jsonString); // Convert string to JSON
+				const parsedData = JSON.parse(jsonString);
 				setDecodedData(parsedData);
 			} catch (error) {
 				console.error("Invalid encoded data:", error);
@@ -33,7 +33,7 @@ export default function PlaygroundContent() {
 				<h1 className="text-3xl">Email Template Maker</h1>
 			</header>
 			<EditorTopbar className="mt-6" />
-				<EditorPreview initialContent={decodedData || {}} />
+			<EditorPreview content={decodedData || {}} />
 			<Footer />
 		</main>
 	);

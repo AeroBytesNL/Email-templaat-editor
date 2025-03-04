@@ -25,3 +25,7 @@ console.log(url);
 // Decode data:
 const jsonString = decodeURIComponent(atob(searchParams.get("data")!));
 const parsedData = JSON.parse(jsonString);
+
+
+// Example URL
+http://localhost:3000/playground?data=JTdCJTIydHlwZSUyMiUzQSUyMmRvYyUyMiUyQyUyMmNvbnRlbnQlMjIlM0ElNUIlN0IlMjJ0eXBlJTIyJTNBJTIyaGVhZGluZyUyMiUyQyUyMmF0dHJzJTIyJTNBJTdCJTIydGV4dEFsaWduJTIyJTNBJTIybGVmdCUyMiUyQyUyMmxldmVsJTIyJTNBMiU3RCUyQyUyMmNvbnRlbnQlMjIlM0ElNUIlN0IlMjJ0eXBlJTIyJTNBJTIydGV4dCUyMiUyQyUyMm1hcmtzJTIyJTNBJTVCJTdCJTIydHlwZSUyMiUzQSUyMmJvbGQlMjIlN0QlNUQlMkMlMjJ0ZXh0JTIyJTNBJTIyRmFra2ElMjIlN0QlNUQlN0QlNUQlN0Q=
