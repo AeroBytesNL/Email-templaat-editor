@@ -11,6 +11,7 @@ import { Input } from './ui/input';
 import { PreviewTextInfo } from './preview-text-info';
 import { Label } from './ui/label';
 import defaultEditorJSON from '../utils/default-editor-json.json';
+import dynamic from 'next/dynamic';
 
 interface EditorPreviewProps {
   className?: string;
