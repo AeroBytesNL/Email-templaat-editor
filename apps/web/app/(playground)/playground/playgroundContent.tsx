@@ -15,7 +15,7 @@ export default function PlaygroundContent() {
 		if (encodedData) {
 			try {
 				const jsonString = decodeURIComponent(atob(encodedData));
-				const parsedData = JSON.parse(jsonString); // Convert string to JSON
+				const parsedData = JSON.parse(jsonString);
 				setDecodedData(parsedData);
 			} catch (error) {
 				console.error("Invalid encoded data:", error);
