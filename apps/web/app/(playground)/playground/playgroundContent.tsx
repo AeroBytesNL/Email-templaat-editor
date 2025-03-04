@@ -33,7 +33,7 @@ export default function PlaygroundContent() {
 				<h1 className="text-3xl">Email Template Maker</h1>
 			</header>
 			<EditorTopbar className="mt-6" />
-				<EditorPreview initialContent={decodedData || {}} />
+			<EditorPreview content={decodedData || {}} />
 			<Footer />
 		</main>
 	);

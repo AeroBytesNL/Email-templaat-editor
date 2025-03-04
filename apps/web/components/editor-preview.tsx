@@ -1,3 +1,5 @@
+"use client"
+
 import { useEffect, useState } from "react";
 import type { EditorProps } from "@maily-to/core";
 import { Editor } from "@maily-to/core";
@@ -10,8 +12,10 @@ import defaultEditorJSON from "../utils/default-editor-json.json";
 
 interface EditorPreviewProps {
   className?: string;
+  content?: JSONContent;
   config?: Partial<EditorProps["config"]>;
 }
+
 
 export function EditorPreview(props: EditorPreviewProps) {
   const searchParams = useSearchParams();
