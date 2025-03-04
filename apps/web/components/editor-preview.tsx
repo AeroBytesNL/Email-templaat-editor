@@ -6,6 +6,7 @@ import type { JSONContent } from "@tiptap/core";
 import { useSearchParams } from "next/navigation";
 import { useEditorContext } from "@/stores/editor-store";
 import { cn } from "@/utils/classname";
+import defaultEditorJSON from "../utils/default-editor-json.json";
 
 interface EditorPreviewProps {
   className?: string;
@@ -14,7 +15,7 @@ interface EditorPreviewProps {
 
 export function EditorPreview(props: EditorPreviewProps) {
   const searchParams = useSearchParams();
-  const [decodedContent, setDecodedContent] = useState<JSONContent | null>(null);
+  let [decodedContent, setDecodedContent] = useState<JSONContent | null>(null);
   const [isLoading, setIsLoading] = useState(true);
   
   const { className, config: defaultConfig } = props;
@@ -63,11 +64,12 @@ export function EditorPreview(props: EditorPreviewProps) {
   }
   
   if (decodedContent === null) {
-    return (
-      <div className="flex items-center justify-center mt-8">
-        <p>Oh, volgensmij heb ik geen JSON data binnen gekregen, AAAH</p>
-      </div>
-    );
+    // return (
+    //   <div className="flex items-center justify-center mt-8">
+    //     <p>Oh, volgensmij heb ik geen JSON data binnen gekregen, AAAH</p>
+    //   </div>
+    // );
+    decodedContent = defaultEditorJSON;
   }
   
   return (
