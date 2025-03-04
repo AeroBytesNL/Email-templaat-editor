@@ -8,20 +8,24 @@ import { Footer } from "@/components/footer";
 
 export default function PlaygroundContent() {
 	const searchParams = useSearchParams();
-	const [decodedData, setDecodedData] = useState<string | null>(null);
+	const [decodedData, setDecodedData] = useState<object | null>(null);
 	
 	useEffect(() => {
 		const encodedData = searchParams.get("data");
 		if (encodedData) {
 			try {
 				const jsonString = decodeURIComponent(atob(encodedData));
-				setDecodedData(jsonString);
+				const parsedData = JSON.parse(jsonString); // Convert string to JSON
+				setDecodedData(parsedData);
 			} catch (error) {
 				console.error("Invalid encoded data:", error);
-				setDecodedData("Error decoding data.");
+				setDecodedData(null);
 			}
 		}
 	}, [searchParams]);
+	
+	console.log("Decoded Data:", decodedData);
+	console.log("Type of decodedData:", typeof decodedData);
 	
 	return (
 		<main className="mx-auto w-full max-w-[calc(600px+40px)] px-5">
@@ -29,7 +33,7 @@ export default function PlaygroundContent() {
 				<h1 className="text-3xl">Email Template Maker</h1>
 			</header>
 			<EditorTopbar className="mt-6" />
-			<EditorPreview initialContent={decodedData || ""} />
+				<EditorPreview initialContent={decodedData || {}} />
 			<Footer />
 		</main>
 	);
