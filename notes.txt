@@ -9,7 +9,7 @@ const jsonData = {
         {
           "type": "text",
           "marks": [{ "type": "bold" }],
-          "text": "Fakka"
+          "text": "So i'm data that was yeeted to me from the URL!"
         }
       ]
     }
